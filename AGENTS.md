@@ -28,9 +28,11 @@ and project constraints.
   affected callers, tests, configuration, and nearby conventions.
   Scale the investigation to the likely impact of the change.
 
-- Prefer the simplest approach that fully meets the requirements and
-  appropriate quality standard. Consider readability, usability, and
-  maintenance; code size alone is not the goal.
+- Prefer the simplest solution that fully meets the requirements and
+  the quality the context calls for. Judge simplicity by total cost —
+  code and readability, plus runtime work, retained state, and ongoing
+  maintenance — not code size alone. Aim for reasonable performance
+  at the expected workload.
 
 - Treat existing conventions as useful defaults. Depart from them when
   the task or evidence justifies it, explaining consequential deviations.
@@ -41,12 +43,18 @@ and project constraints.
 
 ## Task Quality
 
-- For software changes, keep scope focused and avoid speculative
-  abstractions, compatibility layers, and dependencies. Preserve real
+- For software changes, prefer utilities, libraries, and platform
+  primitives already available to the project. Keep scope focused and
+  avoid speculative abstractions, compatibility layers, and new
+  dependencies. Add mechanisms such as persistence, backups, retries,
+  or fallbacks only when a concrete requirement or failure risk calls
+  for them and simpler handling is insufficient. Preserve real
   contracts and handle realistic failure modes.
 
 - For bug fixes, address root causes rather than masking symptoms, unless
-  a targeted workaround is the safer or explicitly requested choice.
+  a targeted workaround is safer or explicitly requested. Match the fix
+  to the underlying cause and its impact. Add ongoing overhead to the
+  normal path only when the cause or concrete requirements justify it.
 
 - If you incidentally discover a well-supported issue outside the task's
   scope, mention it briefly when its impact warrants attention. Include
