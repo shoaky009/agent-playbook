@@ -43,6 +43,12 @@ and project constraints.
 
 ## Task Quality
 
+- When implementing or fixing an operation, use the caller's workflow and
+  domain rules to identify what it acts on, what the caller should observe
+  on success, and which state determines that result. Treat a check or
+  an intermediate step as a prerequisite only if proceeding without it
+  would leave a required effect incomplete or violate an invariant.
+
 - For software changes, prefer utilities, libraries, and platform
   primitives already available to the project. Keep scope focused and
   avoid speculative abstractions, compatibility layers, and new
@@ -107,7 +113,10 @@ and project constraints.
 
 - Verify in proportion to the change and its risks, honoring required
   project checks. Prefer checks that can reveal meaningful failures.
-  Expand verification when evidence warrants it.
+  For behavior changes, check the promised outcome through the normal
+  entry point. Choose a realistic case that would expose a mistaken
+  prerequisite, such as related records changing independently. Expand
+  verification when evidence warrants it.
 
 - Distinguish observed results from assumptions. Never invent sources,
   execution results, or claims that verification succeeded.
