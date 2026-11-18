@@ -1,9 +1,9 @@
 ---
 name: frontend-craft
-description: Design and implement polished, well-crafted user
-  interfaces. Use for creating new frontend pages, components,
-  dashboards, and substantial visual redesigns. Do not use
-  for backend work or purely functional UI bug fixes.
+description: Design and implement frontend interfaces. Use for new
+  pages, components, dashboards, visual redesigns, and targeted
+  usability improvements to workflows or action hierarchy. Skip
+  backend work and purely functional UI fixes.
 ---
 
 # Frontend Craft
@@ -19,23 +19,41 @@ direction for marketing, landing, and brand-led pages.
 
 ## Design Direction
 
-Before implementation, determine:
-- The product's purpose and target users.
-- The appropriate visual character.
-- The desired information density.
-- The primary interaction and visual hierarchy.
+Use the brief, existing screens, and business rules to trace a common
+task from its starting point to a result the user can recognize.
+Identify who does the work, what they need to know at each decision,
+and which steps they repeat. Let this guide layout, density, and
+visual character.
 
-Choose a coherent visual direction and commit to it.
+Order inputs by when people know the answers and reuse known values
+where appropriate. Keep the evidence for a decision where it is made.
+In a review queue, for example, show supporting documents alongside
+the request and preserve the reviewer's filters and place on return.
+
+## Action Hierarchy
+
+- Consider the user's role and the current state. When one action
+  clearly advances the active task or dialog, give it primary emphasis.
+  Keep equally valid outcomes balanced when the user must make an
+  impartial choice. A read-only view may need no primary button.
+- Keep frequent alternatives visible with secondary styling. Put
+  occasional commands in an overflow menu when the extra step is
+  reasonable for the task.
+- Place commands near what they affect. Keep collection actions at the
+  list level, record actions with the record, and bulk actions with
+  the selection. A label such as "Archive 4 selected orders" makes
+  the effect and scope clear.
+- Separate destructive commands from routine controls. Offer undo
+  when feasible. For a costly change that is hard to reverse, make
+  the target and consequence explicit before the user confirms.
 
 ## Visual Defaults
 
 Use the project's design tokens when they exist; these are
 fallbacks, not overrides.
 
-- Hierarchy: distinguish levels with one lever at a time (size,
-  weight, or color); reserve combined emphasis for the single most
-  important element. De-emphasize labels and metadata relative
-  to values.
+- Use size, weight, or color consistently to distinguish levels.
+  Emphasize a status or deadline when it drives the user's decision.
 - Spacing: use a consistent scale (e.g., 4/8/12/16/24/32/48).
   Gaps between groups must be clearly larger than within groups.
   Density follows the product: tools and data views are compact;
@@ -76,8 +94,7 @@ look designed. Unless requested or clearly required, do not add:
 - Controls the realistic data size does not need (tabs, filters,
   bulk actions for a short list).
 
-Copy should state function or consequence, not mood. Let users
-complete the primary task in the fewest reasonable steps.
+Use the user's terms for actions and their consequences.
 
 ## Existing Products
 
@@ -105,6 +122,11 @@ When working in an existing application:
 - Inspect actual rendered output when preview tools exist.
 
 ## Final Quality Check
+
+Walk through the common task from its normal entry point with realistic
+data. Check that the user can tell what the next action affects, see
+the result, and recover from a mistake. For repeated work, try a
+second item to catch avoidable navigation or re-entry.
 
 Evaluate whether:
 - The hierarchy is immediately understandable, and still reads

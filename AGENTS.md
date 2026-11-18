@@ -65,6 +65,13 @@ and project constraints.
   context. Treat usability, accessibility, and visual quality as part
   of the requested result. Use relevant design guidance and references.
 
+- Keep project guides for coding agents brief. Introduce the project's
+  purpose and core concepts, and point to a few stable places to start
+  reading the code. Keep implementation details in the code, with comments
+  beside the relevant logic explaining non-obvious decisions and constraints.
+  A new feature needs a guide update only if it changes that overview or
+  where to start reading.
+
 - Write all human-facing artifacts outside the conversation as standalone
   project content, regardless of their audience. This includes documentation,
   code comments and docstrings, commit messages, pull request and issue text,
