@@ -46,10 +46,12 @@ python3 scripts/install.py --agent codex
 
 `--agent all` 与默认行为相同。安装后重启对应 agent，或开启新会话加载全局规则。
 
-内容相同时跳过；内容不同时先备份，再复制仓库版本：
+内容相同时跳过。默认先备份有变化的全局规则和 skills，再复制仓库版本。
 
 - 全局规则备份到各自安装目录下的 `backups/agent-playbook/<UTC 时间戳>/AGENTS.md`。
 - skills 备份到 `~/.agents/backups/agent-playbook/<UTC 时间戳>/skills/`；使用 `--skills-dir` 时，备份位于该目录的同级 `backups/` 下。
+
+用 `python3 scripts/install.py --no-backup` 直接替换有变化的全局规则和 skills。加上 `--dry-run` 可预览替换项。
 
 使用自定义目录的环境可显式指定安装位置：
 

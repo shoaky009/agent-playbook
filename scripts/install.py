@@ -27,6 +27,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true", help="Show changes without writing files")
     parser.add_argument(
+        "--no-backup", action="store_true", help="Replace changed rules and skills without creating backups",
+    )
+    parser.add_argument(
         "--agent", choices=("codex", "pi", "omp", "all"), default="all",
         help="Agent receiving AGENTS.md (default: all); shared skills are installed once",
     )
@@ -82,10 +85,18 @@ def main():
             continue
 
         if destination.exists() or destination.is_symlink():
-            print(f"Backup: {destination} -> {backup}")
-            if not args.dry_run:
-                backup.parent.mkdir(parents=True, exist_ok=True)
-                shutil.move(str(destination), str(backup))
+            if args.no_backup:
+                print(f"Replace without backup: {destination}")
+                if not args.dry_run:
+                    if destination.is_symlink() or not destination.is_dir():
+                        destination.unlink()
+                    else:
+                        shutil.rmtree(destination)
+            else:
+                print(f"Backup: {destination} -> {backup}")
+                if not args.dry_run:
+                    backup.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.move(str(destination), str(backup))
 
         print(f"Install: {source} -> {destination}")
         if not args.dry_run:
